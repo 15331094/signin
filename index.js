@@ -18,9 +18,9 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/signin', function (req, res) {
+app.get('/signin', function (request, response) {
   response.render('pages2/index');
-})
+});
 
 app.post('/process_post', urlencodedParser, function (req, res) {
 
