@@ -79,7 +79,7 @@ button {
   background-color: white;
   text-align: center;
   display: none;
-  position: relative;
+  position: absolute;
   left: 35%;
   top: 500px;
 }
