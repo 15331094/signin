@@ -80,4 +80,6 @@ button {
   background-color: white;
   text-align: center;
   display: none;
+  position: relative;
+  top: 500px;
 }
