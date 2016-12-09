@@ -52,7 +52,7 @@ $(document).ready(function() {
 			checkPhone($("#phone").val()) == 1 && checkEmail($("#email").val()) == 1 && 
 			checkPassword($("#password").val()) == 1) {
 			alert("现在提交看看");
-			$.post("https://signin1997.herokuapp.com/process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
+			$.post("../process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
             "phone":$("#phone").val(), "email":$("#email").val(), "password":$("#password").val()}, function(data) {
 				alert("lala");
 				alert(data);
