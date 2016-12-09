@@ -104,6 +104,7 @@ $(document).ready(function() {
 	$("#Show").click(function() {
 		$("#signPage").css("display", "block");
 		$("#detailPage").css("display", "block");
+		$("#movie").css("top", "455px");
 	});
 
 
