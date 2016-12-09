@@ -92,13 +92,13 @@ $(document).ready(function() {
 		$("#hide").css("display", "block");
 		$("#Show").css("display", "block");
 		$("#movie").css("display", "block");
-		$("#movie").css("top", "50px");
 		show(window.location.search.substring(10));
 	}
 
 	$("#hide").click(function() {
 		$("#signPage").css("display", "none");
 		$("#detailPage").css("display", "none");
+		$("#movie").css("top", "50px");
 	});
 
 	$("#Show").click(function() {
