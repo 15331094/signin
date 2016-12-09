@@ -89,6 +89,8 @@ $(document).ready(function() {
 	if(window.location.search.substring(0, 10) == "?username=") {
 		$("#signPage").css("z-index", "-1");
 		$("#detailPage").css("z-index", "1");
+		$("#hide").css("display", "block");
+		$("#Show").css("display", "block");
 		show(window.location.search.substring(10));
 	}
 
