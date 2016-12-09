@@ -1,11 +1,5 @@
 var express = require('express');
-var fs = require('fs');
-var bodyParser = require('body-parser');
 var app = express();
-
-// 创建 application/x-www-form-urlencoded 编码解析
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
 
 app.set('port', (process.env.PORT || 8000));
 
