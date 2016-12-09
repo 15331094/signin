@@ -49,12 +49,16 @@ $(document).ready(function() {
 	});
 	//当点击提交按钮
 	$("#submit").click(function() {
+		alert("点击了注册按钮");
 		//当个人信息合法且还没被注册过，则注册成功，并把信息上传到server.js
 		if(checkName($("#name").val()) == 1 && checkID($("#ID").val()) == 1 && 
 			checkPhone($("#phone").val()) == 1 && checkEmail($("#email").val()) == 1 && 
 			checkPassword($("#password").val()) == 1) {
+			alert("现在提交看看");
 			$.post("../process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
             "phone":$("#phone").val(), "email":$("#email").val(), "password":$("#password").val()}, function(data) {
+				alert("lala");
+				alert(data);
 				$(".tips").text(data);
 				if(data == "注册成功!") {
 					//alert("lala");
@@ -87,4 +91,16 @@ $(document).ready(function() {
 		$("#detailPage").css("z-index", "1");
 		show(window.location.search.substring(10));
 	}
+
+	$("#hide").click(function() {
+		$("#signPage").css("display", "none");
+		$("#detailPage").css("display", "none");
+	});
+
+	$("#Show").click(function() {
+		$("#signPage").css("display", "block");
+		$("#detailPage").css("display", "block");
+	});
+
+
 });
