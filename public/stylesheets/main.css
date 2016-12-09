@@ -5,7 +5,7 @@ body {
 
 #detailPage {
   position: absolute;
-  top: 20px;
+  top: 30px;
   left: 40%;
   width: 240px;
   height: 350px;
@@ -15,7 +15,7 @@ body {
 
 #signPage {
   position: absolute;
-  top: 20px;
+  top: 30px;
   left: 40%;
   width: 240px;
   height: 350px;
@@ -25,7 +25,7 @@ body {
 
 #signinPage {
   position: absolute;
-  top: 20px;
+  top: 30px;
   left: 40%;
   width: 240px;
   height: 230px;
@@ -59,6 +59,14 @@ button {
   /*display: none;*/
 }
 
-body {
-  text-align: center;
+#hide {
+  position: absolute;
+  top: 10px;
+  left: 48%;
+}
+
+#Show {
+  position: absolute;
+  top: 10px;
+  left: 51%;
 }
