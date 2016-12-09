@@ -1,0 +1,61 @@
+
+body {
+  background-color: gray;
+}
+
+#detailPage {
+  position: absolute;
+  top: 20px;
+  left: 40%;
+  width: 240px;
+  height: 350px;
+  background-color: white;
+  z-index: -1;
+}
+
+#signPage {
+  position: absolute;
+  top: 20px;
+  left: 40%;
+  width: 240px;
+  height: 350px;
+  background-color: white;
+  z-index: 1;
+}
+
+#signinPage {
+  position: absolute;
+  top: 20px;
+  left: 40%;
+  width: 240px;
+  height: 230px;
+  background-color: white;
+}
+
+h1 {
+  text-align: center;
+}
+
+input {
+  margin-bottom: 15px;
+  margin-left: 40px;
+}
+
+button {
+  float: right;
+  margin-right: 10px;
+}
+
+#detailPage input {
+  border: none;
+}
+
+.tips {
+  height: 25px;
+  width: 90px;
+  /*background-color: red;*/
+  margin-left: 35%;
+  margin-bottom: 10px;
+  /*display: none;*/
+}
+
