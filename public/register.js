@@ -91,6 +91,7 @@ $(document).ready(function() {
 		$("#detailPage").css("z-index", "1");
 		$("#hide").css("display", "block");
 		$("#Show").css("display", "block");
+		$("#movie").css("display", "block");
 		show(window.location.search.substring(10));
 	}
 
