@@ -14,7 +14,7 @@ $(document).ready(function() {
 	}
 	//撞到注册页面
 	$("#register").click(function() {
-		window.location.href="https://signin1997.herokuapp.com/regist";
+		window.location.href="https://signin1997.herokuapp.com/";
 	});
 	//填写信息后登陆
 	$("#signin").click(function() {
