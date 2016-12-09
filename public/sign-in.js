@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	alert("lalala");
 	//判断名字是否合法
 	function checkName(name) {
 		if(name.length < 6 || name.length > 18) return 0;
