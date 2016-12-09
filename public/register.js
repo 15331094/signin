@@ -49,12 +49,10 @@ $(document).ready(function() {
 	});
 	//当点击提交按钮
 	$("#submit").click(function() {
-		alert("点击了注册按钮");
 		//当个人信息合法且还没被注册过，则注册成功，并把信息上传到server.js
 		if(checkName($("#name").val()) == 1 && checkID($("#ID").val()) == 1 && 
 			checkPhone($("#phone").val()) == 1 && checkEmail($("#email").val()) == 1 && 
 			checkPassword($("#password").val()) == 1) {
-			alert("现在提交看看");
 			$.post("../process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
             "phone":$("#phone").val(), "email":$("#email").val(), "password":$("#password").val()}, function(data) {
 				alert("lala");
