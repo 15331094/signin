@@ -55,8 +55,6 @@ $(document).ready(function() {
 			checkPassword($("#password").val()) == 1) {
 			$.post("../process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
             "phone":$("#phone").val(), "email":$("#email").val(), "password":$("#password").val()}, function(data) {
-				alert("lala");
-				alert(data);
 				$(".tips").text(data);
 				if(data == "注册成功!") {
 					//alert("lala");
