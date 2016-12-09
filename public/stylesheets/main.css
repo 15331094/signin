@@ -62,7 +62,7 @@ button {
 #hide {
   position: absolute;
   top: 10px;
-  left: 43%;
+  left: 42%;
   display: none;
 }
 
@@ -80,7 +80,7 @@ button {
   text-align: center;
   display: none;
   position: absolute;
-  left: 32%;
+  left: 34%;
   top: 455px;
   font-size: 20px;
 }
