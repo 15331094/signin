@@ -33,7 +33,7 @@ $(document).ready(function() {
 	//展示个人信息的函数
 	function show(Name) {
 		if(window.location.search.substring(0, 10) == "?username=") {
-			$.post("http://localhost:8000/process_post", {"name":window.location.search.substring(10), "ID":"", 
+			$.post("https://signin1997.herokuapp.com/process_post", {"name":window.location.search.substring(10), "ID":"", 
             "phone":"", "email":""}, function(data) {
 				data = eval("(" + data + ")");
 				$("#nameShow").val("用户名: " + data.name);
@@ -51,7 +51,7 @@ $(document).ready(function() {
 			checkPhone($("#phone").val()) == 1 && checkEmail($("#email").val()) == 1 && 
 			checkPassword($("#password").val()) == 1) {
 			//alert("send");
-			$.post("http://localhost:8000/process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
+			$.post("https://signin1997.herokuapp.com/process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
             "phone":$("#phone").val(), "email":$("#email").val(), "password":$("#password").val()}, function(data) {
 				
 				//alert(data);
@@ -59,7 +59,7 @@ $(document).ready(function() {
 				if(data == "注册成功!") {
 					//alert("lala");
 					setTimeout(function() {
-						window.location.href="http://localhost:8000?username=" + $("#name").val();
+						window.location.href="https://signin1997.herokuapp.com?username=" + $("#name").val();
 					}, 1000);
 				}
 
