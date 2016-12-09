@@ -74,12 +74,12 @@ button {
 }
 
 #movie {
-  margin: auto;
   width: 400px;
   height: 300px;
   background-color: white;
   text-align: center;
   display: none;
   position: relative;
+  left: 35%;
   top: 500px;
 }
