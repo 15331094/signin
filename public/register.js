@@ -87,7 +87,7 @@ $(document).ready(function() {
 	});
 	//展示个人信息
 	if(window.location.search.substring(0, 10) == "?username=") {
-		$("#signPage").css("z-index", "-1");
+		$("#signPage").css("z-index", "0");
 		$("#detailPage").css("z-index", "1");
 		$("#hide").css("display", "block");
 		$("#Show").css("display", "block");
