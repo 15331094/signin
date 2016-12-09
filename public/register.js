@@ -53,8 +53,8 @@ $(document).ready(function() {
 			//alert("send");
 			$.post("https://signin1997.herokuapp.com/process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
             "phone":$("#phone").val(), "email":$("#email").val(), "password":$("#password").val()}, function(data) {
-				
-				//alert(data);
+				alert("lala");
+				alert(data);
 				$(".tips").text(data);
 				if(data == "注册成功!") {
 					//alert("lala");
