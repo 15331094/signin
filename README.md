@@ -2,7 +2,7 @@
                                             
   总所周知，github是只能部署并且展示静态的页面，想nodejs这些项目就跑不了。一开始我还考虑着买一个阿里云服务器，网上对阿里云服务器的好评很多，
 虽然价格便宜，性价比高，但是我肯定能不花钱就不花钱啊，后来发现国内有个叫coding的网站，跟github类似，就是可以可以跑nodejs，但是遗憾地发现它
-以为更新升级的原因，已经在今年10月停止展示项目效果的功能了，所以我找到了美国cloud platform ———heroku。
+因为更新升级的原因，已经在今年10月停止展示项目效果的功能了，要到明年一月才从新开放这个功能。所以我找到了美国cloud platform ———heroku。
 
   在heroku上部署nodejs完整官网教程链接：https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up 虽然是全英文，但是
 看着命令行还是很容易看懂的。但是有一点要说的就是。
