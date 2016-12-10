@@ -32,3 +32,5 @@
 
   最后，我这次也是把我一个web作业弄到github和heroku上来的，作业要求用MongoDB，然而我现在都还是无法连接到MongoDB服务器，无奈之下只能用data.txt
 文件进行读写操作。
+  最后的最后，附上我这次在heroku上的项目链接：https://signin1997.herokuapp.com/ ，有点可惜的是heroku是美国云平台，美国服务器，可能会点卡，而
+且微信会影响服务器响应。最好用浏览器打开，谷歌更佳。
