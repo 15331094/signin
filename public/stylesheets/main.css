@@ -11,6 +11,7 @@ body {
   height: 350px;
   background-color: white;
   z-index: 0;
+  transition: all 1s;
 }
 
 #signPage {
@@ -21,6 +22,7 @@ body {
   height: 350px;
   background-color: white;
   z-index: 1;
+  transition: all 1s;
 }
 
 #signinPage {
@@ -30,6 +32,7 @@ body {
   width: 240px;
   height: 230px;
   background-color: white;
+  transition: all 1s;
 }
 
 h1 {
@@ -83,4 +86,5 @@ button {
   left: 34%;
   top: 455px;
   font-size: 20px;
+  transition: all 1s;
 }
