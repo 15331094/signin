@@ -31,101 +31,119 @@ app.post('/process_post', urlencodedParser, function (req, res) {
     email: req.body.email,
     password: req.body.password
   };
+
   //注册
   if(response.name != "" && response.ID != "" && 
     response.phone != "" && response.email != "" && response.password != "") {
 
     console.log("注册");
+    //注册前先打开数据库看看有没有被注册
 
-    fs.readFile("data.txt", function(err, buffer) {
-      if (err) throw err;
+    var mongodb = require('mongodb');
+    mongodb.MongoClient.connect(uri, function(err, db) {
+      if(err) throw err;
+      else console.log("成功连接");
 
-      var str = buffer.toString("utf-8");
-      if(str.indexOf(response.name) != -1 && 
-        str[str.indexOf(response.name) - 1] == '"' && 
-        str[str.indexOf(response.name) + response.name.length] == '"') {
+      db.collection('users',{safe:true},function(err,collection){
+        if(err){
+          console.log(err);
+        }  
+        else {
+          console.log("已存在，现在存数据进去  ");
+          collection.findOne({name: response.name}, function(err,doc){
+            console.log('findOne');
+            if(doc == null) {
+              console.log("没有这个用户");
+              collection.insert(response, {safe: true}, function(err, result){
+                console.log("保存成功");
+                res.end("注册成功!");
+              });
+            }
+            else {
+              console.log("此名字已经被使用");
+              res.end("名字已存在!");
+            }
+          });
+        } 
+      }); 
+    });
 
-        res.end("名字已存在!");
-        console.log("名字已存在!");
-      }
-      else {
-        fs.writeFile('data.txt', JSON.stringify(response) + "\r\n", { flag: 'a'}, (err) => {
-          if (err) throw err;
-          console.log("保存成功!");
-        });        
-        res.end("注册成功!");
-        console.log("注册成功!");
-      }
-    }); 
   }
+
   //详情
   else if(response.name != "" && response.ID == "" && 
     response.phone == "" && response.email == "" && response.password == undefined) {
 
-    fs.readFile("data.txt", function(err, buffer) {
-      if (err) throw err;
-      console.log("详情");
 
-      var str = buffer.toString("utf-8");
-      var start = 0, flag = false;
-      for(var i = 0; i < str.length; i++) {
-        if(str[i] == "\n") {
-          if(str.substring(start, i).indexOf(response.name) != -1 && 
-            str.substring(start, i)[str.substring(start, i).indexOf(response.name) - 1] == '"' && 
-            str.substring(start, i)[str.substring(start, i).indexOf(response.name) + response.name.length] == '"') {
-            
-            res.end(str.substring(start, i - 1));
-            console.log("查找详情成功!");
-            flag = true;
-            break;
-          }
-          start = i + 1;
-        }
-      }
-      if(flag == false) {
-        res.end("We did not have this register");
-        console.log("查找详情失败!");
-      }
-    });    
+    var mongodb = require('mongodb');
+    mongodb.MongoClient.connect(uri, function(err, db) {
+      if(err) throw err;
+      else console.log("成功连接");
+
+      db.collection('users',{safe:true},function(err,collection){
+        if(err){
+          console.log(err);
+        }  
+        else {
+          console.log("已存在，现在存数据进去  ");
+          collection.findOne({name: response.name}, function(err,doc){
+            console.log('findOne');
+            if(doc == null) {
+              res.end("We did not have this register");
+              console.log("没有这个用户，查找详情失败!");
+            }
+            else {
+              console.log(doc);
+              console.log(JSON.stringify(doc));
+              res.end(JSON.stringify(doc));
+              console.log("查找详情成功!");
+            }
+          });
+        } 
+      }); 
+    });
   }
+
   //登陆
   else if(response.name != "" && response.ID == "" && 
     response.phone == "" && response.email == "" && response.password != "") {
     console.log("登陆");
 
-    fs.readFile("data.txt", function(err, buffer) {
-      if (err) throw err;
-      
-      var str = buffer.toString("utf-8");
-      if(str.indexOf(response.name) == -1 || 
-        (str.indexOf(response.name) != -1 && 
-        (str[str.indexOf(response.name) - 1] != '"' || str[str.indexOf(response.name) + response.name.length] != '"'))) {
+
+
+    var mongodb = require('mongodb');
+    mongodb.MongoClient.connect(uri, function(err, db) {
+      if(err) throw err;
+      else console.log("成功连接");
         
-        res.end("账号不存在!");
-      }
-      else {
-        var start = 0;
-        for(var i = 0; i < str.length; i++) {
-          if(str[i] == "\n") {
-            if(str.substring(start, i).match(response.name) == response.name && 
-              str.substring(start, i).match(response.password) == response.password) {
-
-              res.end(str.substring(start, i - 1));
-              console.log("登陆成功!");
-              break;
+      db.collection('users',{safe:true},function(err,collection){
+        if(err){
+          console.log(err);
+        }  
+        else {
+          console.log("已存在，现在存数据进去  ");
+          collection.findOne({name: response.name}, function(err,doc){
+            console.log('findOne');
+            if(doc == null) {
+              res.end("账号不存在!");
+              console.log("账号不存在，登录失败");
             }
-            else if(str.substring(start, i).match(response.name) == response.name && 
-              str.substring(start, i).match(response.password) != response.password) {
-
-              res.end("密码错误!");
-              console.log("密码错误");
-              break;
+            else {
+              if(response.password == doc.password) {
+                //console.log(doc.password);
+                res.end(JSON.stringify(doc));
+                console.log("登陆成功!");
+              }
+              else if(response.password != doc.password) {
+                res.end("密码错误!");
+                console.log("密码错误");   
+              }
+ 
             }
-            start = i + 1;
-          }
-        }        
-      }
-    });  
+          });
+        } 
+      }); 
+    })
   }
 })
 
