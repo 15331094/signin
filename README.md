@@ -30,7 +30,11 @@
 安装完之后打开node-modules就会发现里面多了个body-parser的文件夹，把里面除了body-parser的文件夹都删除。然后在uploadfile到github的时候一起把
 只包含body-parser的node-modules的文件夹跟你的app一起upload上去。这样connect之后，heroku就不会再报错。
 
-  最后，我这次也是把我一个web作业弄到github和heroku上来的，作业要求用MongoDB，然而我现在都还是无法连接到MongoDB服务器，无奈之下只能用data.txt
-文件进行读写操作。
+  之前我不会用mongodb，但是现在我学会了，而且在这个项目中我使用了mLab上的mongodb数据库https://mlab.com/这是它的官网，至于怎么获得一个mongodb
+数据库，我是看一下教程的，很简单。http://huangbingbing.com/2015/05/13/nodejs%E5%92%8Cmongodb%E9%A1%B9%E7%9B%AE%E5%9C%A8%E7%BA%BF%E9%83%A8%E7%BD%B2/
+但是在加上了mongodb之后，你会发现你的heroku伤的app无法访问数据库。这时候，我明白是因为heroku应该没有提供mogodb等模块。像上面解决body-parser
+模块的问题一样，在项目的本地目录下打开命令行输入npm install mongodb,接着你就会在node-modules文件夹里面发现增加了两个文件夹mongodb和mongodb-core 跟
+上面一样，把这两个文件夹upload到github上相应的目录，然后在heroku上再同上deplo一次，打开就会发现可以使用你的数据库了。打开你的mlab账号，会发现页面上 
+的注册信息都会post在上面的。
   最后的最后，附上我这次在heroku上的项目链接：https://signin1997.herokuapp.com/ ，有点可惜的是heroku是美国云平台，美国服务器，可能会点卡，而
 且微信会影响服务器响应。最好用浏览器打开，谷歌更佳。
