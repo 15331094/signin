@@ -26,3 +26,5 @@
 这样就会生成整个npm-modules文件夹，但是打开这个文件夹，你回发现并没有body-parser这个东西，接着回到刚刚的主目录，输入npm install body-parser。
 安装完之后打开node-modules就会发现里面多了个body-parser的文件夹，把里面除了body-parser的文件夹都删除。然后在uploadfile到github的时候一起把
 只包含body-parser的node-modules的文件夹跟你的app一起upload上去。这样connect之后，heroku就不会再报错。
+  最后，我这次也是把我一个web作业弄到github和heroku上来的，作业要求用MongoDB，然而我现在都还是无法连接到MongoDB服务器，无奈之下只能用data.txt
+文件进行读写操作。
