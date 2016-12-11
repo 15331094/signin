@@ -88,3 +88,16 @@ button {
   font-size: 20px;
   transition: all 1s;
 }
+
+#comment {
+  width: 600px;
+  background-color: white;
+  /*text-align: center;*/
+  /*display: none;*/
+  position: absolute;
+  left: 28%;
+  top: 760px;
+  font-size: 12px;
+  transition: all 1s;
+  padding-bottom: 20px;
+}
