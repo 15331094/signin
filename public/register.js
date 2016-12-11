@@ -100,7 +100,7 @@ $(document).ready(function() {
 		$("#signPage").css("display", "none");
 		$("#detailPage").css("display", "none");
 		$("#movie").css("top", "50px");
-		$("#comment").css("top", "336px");
+		$("#comment").css("top", "350px");
 	});
 
 	$("#Show").click(function() {
