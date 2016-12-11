@@ -78,12 +78,12 @@ button {
 
 #movie {
   width: 400px;
-  height: 300px;
+  height: 600px;
   background-color: white;
   text-align: center;
   display: none;
   position: absolute;
-  left: 34%;
+  left: 28%;
   top: 455px;
   font-size: 20px;
   transition: all 1s;
@@ -97,7 +97,5 @@ button {
   position: absolute;
   left: 28%;
   top: 760px;
-  font-size: 12px;
-  transition: all 1s;
   padding-bottom: 20px;
 }
