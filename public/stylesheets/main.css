@@ -77,8 +77,8 @@ button {
 }
 
 #movie {
-  width: 400px;
-  height: 600px;
+  width: 600px;
+  height: 300px;
   background-color: white;
   text-align: center;
   display: none;
