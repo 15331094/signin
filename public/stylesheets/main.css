@@ -93,7 +93,7 @@ button {
   width: 600px;
   background-color: white;
   /*text-align: center;*/
-  /*display: none;*/
+  display: none;
   position: absolute;
   left: 28%;
   top: 760px;
