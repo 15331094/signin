@@ -110,5 +110,9 @@ $(document).ready(function() {
 		$("#comment").css("top", "760px");
 	});
 
+	//当点击退出按钮
+	$("#quit").click(function() {
+		window.location.href="http://localhost:8000/signin"
+	});
 
 });
