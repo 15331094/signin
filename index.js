@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var uri = 'mongodb://abc:123@ds129038.mlab.com:29038/gzm1997';
 var fs = require('fs');
+var cookie = require('cookie-parser');
 var bodyParser = require('body-parser');
 // 创建 application/x-www-form-urlencoded 编码解析
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -9,16 +10,30 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.set('port', (process.env.PORT || 8000));
 
 app.use(express.static(__dirname + '/public'));
+app.use(cookie());
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  response.render('pages/index');
+  if(request.query.username != undefined && request.cookies.log == "true") {
+    response.render('pages/index');
+  }
+  else {
+    console.log("请求无效！")
+    response.send("请求无效！");
+  }
 });
 
+app.get('/regist', function (request, response) {
+  //把cookie的log变量变为赋值为字符串"false"，表明不能打开详情的页面
+    response.cookie("log", "false");
+    response.sendFile( __dirname + "/" + "register.html" );
+})
+
 app.get('/signin', function (request, response) {
+  response.cookie("log", "false");
   response.render('pages2/index');
 });
 
