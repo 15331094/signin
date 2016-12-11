@@ -92,6 +92,7 @@ $(document).ready(function() {
 		$("#hide").css("display", "block");
 		$("#Show").css("display", "block");
 		$("#movie").css("display", "block");
+		$("#comment").css("display", "block");
 		show(window.location.search.substring(10));
 	}
 
@@ -99,12 +100,14 @@ $(document).ready(function() {
 		$("#signPage").css("display", "none");
 		$("#detailPage").css("display", "none");
 		$("#movie").css("top", "50px");
+		$("#comment").css("top", "336px");
 	});
 
 	$("#Show").click(function() {
 		$("#signPage").css("display", "block");
 		$("#detailPage").css("display", "block");
 		$("#movie").css("top", "455px");
+		$("#comment").css("top", "760px");
 	});
 
 
