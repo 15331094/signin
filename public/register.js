@@ -55,7 +55,7 @@ $(document).ready(function() {
 			checkPhone($("#phone").val()) == 1 && checkEmail($("#email").val()) == 1 && 
 			checkPassword($("#password").val()) == 1) {
 			//alert("现在提交看看");
-			$.post("../process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
+			$.post("https://signin1997.herokuapp.com/process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
             "phone":$("#phone").val(), "email":$("#email").val(), "password":$("#password").val()}, function(data) {
 				//alert("lala");
 				//alert(data);
@@ -63,6 +63,7 @@ $(document).ready(function() {
 				if(data == "注册成功!") {
 					//alert("lala");
 					setTimeout(function() {
+						//alert($("#name").val());
 						window.location.href="https://signin1997.herokuapp.com?username=" + $("#name").val();
 					}, 1000);
 				}
@@ -112,7 +113,7 @@ $(document).ready(function() {
 
 	//当点击退出按钮
 	$("#quit").click(function() {
-		window.location.href="http://localhost:8000/signin"
+		window.location.href="https://signin1997.herokuapp.com/signin"
 	});
 
 });
