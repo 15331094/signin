@@ -66,22 +66,96 @@ app.post('/process_post', urlencodedParser, function (req, res) {
           console.log(err);
         }  
         else {
-          console.log("已存在，现在存数据进去  ");
+          console.log("现在连接上collection");
+
+
+          var nameFine, IDFind, phoneFine, emailFine;
+
           collection.findOne({name: response.name}, function(err,doc){
-            console.log('findOne');
             if(doc == null) {
-              console.log("没有这个用户");
-              collection.insert(response, {safe: true}, function(err, result){
-                res.cookie("log", "true");
-                console.log("保存成功");
-                res.end("注册成功!");
-              });
+              console.log("名字尚未被注册");
+              nameFine = false;
             }
             else {
               console.log("此名字已经被使用");
-              res.end("名字已存在!");
+              nameFine = true;
             }
           });
+
+          collection.findOne({ID: response.ID}, function(err,doc){
+            if(doc == null) {
+              console.log("ID尚未被注册");
+              IDFind = false;
+            }
+            else {
+              console.log("此ID已经被使用");
+              IDFind = true;
+            }
+          });
+
+          collection.findOne({phone: response.phone}, function(err,doc){
+            if(doc == null) {
+              console.log("电话尚未被注册");
+              phoneFine = false;
+            }
+            else {
+              console.log("此电话已经被使用");
+              phoneFine = true;
+            }
+          });
+
+          collection.findOne({email: response.email}, function(err,doc){
+            if(doc == null) {
+              console.log("email尚未被注册");
+              emailFine = false;
+            }
+            else {
+              console.log("此email已经被使用");
+              emailFine = true;
+            }
+          });
+
+
+          setTimeout(function() {
+            var findresult = "";
+            if(nameFine == true) findresult += "名字 ";
+            if(IDFind == true) findresult += "ID ";
+            if(phoneFine == true) findresult += "电话 ";
+            if(emailFine == true) findresult += "email ";
+            findresult = findresult.substring(0, findresult.length - 1) + "已经被注册";
+
+            if(nameFine == false && IDFind == false && phoneFine == false && emailFine == false) {
+              console.log("注册信息合法没有重复");
+              collection.insert(response, {safe: true}, function(err, result){
+                    console.log("保存成功");
+                    res.cookie("log", "true");
+                    res.end("注册成功!");
+              });
+            }
+            else {
+              console.log("注册信息非法有重复");
+              res.end(findresult);
+            }            
+          }, 1500); 
+
+
+
+
+
+/*
+                collection.insert(response, {safe: true}, function(err, result){
+                  console.log("保存成功");
+                  res.cookie("log", "true");
+                  res.end("注册成功!");
+                });
+*/
+
+
+
+
+
+
+
         } 
       }); 
     });
