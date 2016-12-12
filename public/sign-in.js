@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+	//alert("lalala");
 	//判断名字是否合法
 	function checkName(name) {
 		if(name.length < 6 || name.length > 18) return 0;
@@ -15,7 +15,8 @@ $(document).ready(function() {
 	}
 	//撞到注册页面
 	$("#register").click(function() {
-		window.location.href="https://signin1997.herokuapp.com/";
+		window.location.href="https://signin1997.herokuapp.com/regist";
+		//alert("lala")
 	});
 	//填写信息后登陆
 	$("#signin").click(function() {
@@ -30,10 +31,11 @@ $(document).ready(function() {
 			$(".tips").text("密码非法！");
 		}
 		else {
+			//alert("yes")
 			$.post("https://signin1997.herokuapp.com/process_post", {"name":name, "ID":"", 
             "phone":"", "email":"", "password":password}, function(data) {
 				if(data == "账号不存在!" || data == "密码错误!") {
-					//alert(data);
+					alert(data);
 					$(".tips").text(data);
 				}
 				else {
