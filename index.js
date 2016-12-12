@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 // 创建 application/x-www-form-urlencoded 编码解析
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-app.set('port', (process.env.PORT || 8000));
+app.set('port', (process.env.PORT || 80));
 
 app.use(express.static(__dirname + '/public'));
 app.use(cookie());
