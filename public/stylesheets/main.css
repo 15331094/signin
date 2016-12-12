@@ -49,9 +49,14 @@ input {
   margin-bottom: 15px;
 }
 
-button {
+#detailPage button, #signPage button, #signinPage button {
   float: right;
   margin-right: 10px;
+}
+
+#movie button {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #detailPage input {
@@ -68,9 +73,6 @@ button {
 }
 
 #hideshow{
-  position: absolute;
-  top: 10px;
-  left: 45.5%;
   display: none;
 }
 
