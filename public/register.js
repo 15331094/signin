@@ -33,7 +33,7 @@ $(document).ready(function() {
 	//展示个人信息的函数
 	function show(Name) {
 		if(window.location.search.substring(0, 10) == "?username=") {
-			$.post("https://signin1997.herokuapp.com/process_post", {"name":window.location.search.substring(10), "ID":"", 
+			$.post("http://localhost:8000/process_post", {"name":window.location.search.substring(10), "ID":"", 
             "phone":"", "email":""}, function(data) {
 				data = eval("(" + data + ")");
 				$("#nameShow").val("用户名: " + data.name);
@@ -45,7 +45,7 @@ $(document).ready(function() {
 	}
 	//	转到登录页面
 	$("#SignIn").click(function() {
-		window.location.href="https://signin1997.herokuapp.com/signin";
+		window.location.href="http://localhost:8000/signin";
 	});
 	//当点击提交按钮
 	$("#submit").click(function() {
@@ -55,7 +55,7 @@ $(document).ready(function() {
 			checkPhone($("#phone").val()) == 1 && checkEmail($("#email").val()) == 1 && 
 			checkPassword($("#password").val()) == 1) {
 			//alert("现在提交看看");
-			$.post("https://signin1997.herokuapp.com/process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
+			$.post("http://localhost:8000/process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
             "phone":$("#phone").val(), "email":$("#email").val(), "password":$("#password").val()}, function(data) {
 				//alert("lala");
 				//alert(data);
@@ -64,7 +64,7 @@ $(document).ready(function() {
 					//alert("lala");
 					setTimeout(function() {
 						//alert($("#name").val());
-						window.location.href="https://signin1997.herokuapp.com?username=" + $("#name").val();
+						window.location.href="http://localhost:8000?username=" + $("#name").val();
 					}, 1000);
 				}
 
@@ -90,30 +90,35 @@ $(document).ready(function() {
 	if(window.location.search.substring(0, 10) == "?username=") {
 		$("#signPage").css("z-index", "0");
 		$("#detailPage").css("z-index", "1");
-		$("#hide").css("display", "block");
-		$("#Show").css("display", "block");
+		$("#hideshow").css("display", "block");
 		$("#movie").css("display", "block");
 		$("#comment").css("display", "block");
 		show(window.location.search.substring(10));
 	}
 
-	$("#hide").click(function() {
-		$("#signPage").css("display", "none");
-		$("#detailPage").css("display", "none");
-		$("#movie").css("top", "50px");
-		$("#comment").css("top", "360px");
-	});
-
-	$("#Show").click(function() {
-		$("#signPage").css("display", "block");
-		$("#detailPage").css("display", "block");
-		$("#movie").css("top", "455px");
-		$("#comment").css("top", "760px");
+	var hideshow = "show";
+	$("#hideshow").click(function() {
+		if(hideshow == "show") {
+			$("#signPage").css("display", "none");
+			$("#detailPage").css("display", "none");
+			$("#movie").css("top", "50px");
+			$("#comment").css("top", "360px");	
+			$("#hideshow").text("展示详情");
+			hideshow = "hide";
+		}
+		else if(hideshow == "hide") {
+			$("#signPage").css("display", "block");
+			$("#detailPage").css("display", "block");
+			$("#movie").css("top", "455px");
+			$("#comment").css("top", "760px");
+			$("#hideshow").text("隐藏详情");
+			hideshow = "show";			
+		}
 	});
 
 	//当点击退出按钮
 	$("#quit").click(function() {
-		window.location.href="https://signin1997.herokuapp.com/signin"
+		window.location.href="http://localhost:8000/signin"
 	});
 
 });
