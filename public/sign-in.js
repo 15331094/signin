@@ -35,7 +35,7 @@ $(document).ready(function() {
 			$.post("https://signin1997.herokuapp.com/process_post", {"name":name, "ID":"", 
             "phone":"", "email":"", "password":password}, function(data) {
 				if(data == "账号不存在!" || data == "密码错误!") {
-					alert(data);
+					//alert(data);
 					$(".tips").text(data);
 				}
 				else {
