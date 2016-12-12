@@ -6,8 +6,8 @@ body {
 #detailPage {
   position: absolute;
   top: 50px;
-  left: 35%;
-  width: 30%;
+  left: 20%;
+  width: 60%;
   height: 400px;
   background-color: gray;
   z-index: 0;
@@ -19,9 +19,9 @@ body {
 #signPage {
   position: absolute;
   top: 50px;
-  left: 35%;
-  width: 30%;
-  height: 400px;
+  left: 20%;
+  width: 60%;
+  height: 410px;
   background-color: gray;
   z-index: 1;
   transition: all 1s;
@@ -32,9 +32,9 @@ body {
 #signinPage {
   position: absolute;
   top: 50px;
-  left: 35%;
-  width: 30%;
-  height: 250px;
+  left: 20%;
+  width: 60%;
+  height: 300px;
   background-color: gray;
   transition: all 1s;
   padding-left: 10px;
@@ -70,14 +70,14 @@ button {
 #hide {
   position: absolute;
   top: 10px;
-  left: 40.5%;
+  left: 20%;
   display: none;
 }
 
 #Show {
   position: absolute;
   top: 10px;
-  left: 52.5%;
+  left: 73.5%;
   display: none;
 }
 
