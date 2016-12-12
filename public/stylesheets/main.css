@@ -6,33 +6,39 @@ body {
 #detailPage {
   position: absolute;
   top: 50px;
-  left: 40%;
-  width: 240px;
-  height: 350px;
+  left: 35%;
+  width: 30%;
+  height: 400px;
   background-color: gray;
   z-index: 0;
   transition: all 1s;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #signPage {
   position: absolute;
   top: 50px;
-  left: 40%;
-  width: 240px;
-  height: 350px;
+  left: 35%;
+  width: 30%;
+  height: 400px;
   background-color: gray;
   z-index: 1;
   transition: all 1s;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #signinPage {
   position: absolute;
   top: 50px;
-  left: 40%;
-  width: 240px;
-  height: 230px;
+  left: 35%;
+  width: 30%;
+  height: 250px;
   background-color: gray;
   transition: all 1s;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 h1 {
@@ -41,7 +47,6 @@ h1 {
 
 input {
   margin-bottom: 15px;
-  margin-left: 40px;
 }
 
 button {
@@ -72,7 +77,7 @@ button {
 #Show {
   position: absolute;
   top: 10px;
-  left: 53%;
+  left: 52.5%;
   display: none;
 }
 
