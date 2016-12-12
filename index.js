@@ -17,6 +17,8 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
+  console.log(request.query.username);
+   console.log(request.cookies.log);
   if(request.query.username != undefined && request.cookies.log == "true") {
     response.render('pages/index');
   }
@@ -29,7 +31,7 @@ app.get('/', function(request, response) {
 app.get('/regist', function (request, response) {
   //把cookie的log变量变为赋值为字符串"false"，表明不能打开详情的页面
     response.cookie("log", "false");
-    response.sendFile( __dirname + "/" + "register.html" );
+    response.render('pages/index');
 })
 
 app.get('/signin', function (request, response) {
@@ -70,6 +72,7 @@ app.post('/process_post', urlencodedParser, function (req, res) {
             if(doc == null) {
               console.log("没有这个用户");
               collection.insert(response, {safe: true}, function(err, result){
+                res.cookie("log", "true");
                 console.log("保存成功");
                 res.end("注册成功!");
               });
@@ -146,6 +149,7 @@ app.post('/process_post', urlencodedParser, function (req, res) {
             else {
               if(response.password == doc.password) {
                 //console.log(doc.password);
+                res.cookie("log", "true");
                 res.end(JSON.stringify(doc));
                 console.log("登陆成功!");
               }
