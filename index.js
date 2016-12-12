@@ -24,7 +24,7 @@ app.get('/', function(request, response) {
   }
   else {
     console.log("请求无效！")
-    response.send("请求无效！");
+    response.send("这里不是主页面，请在浏览器上方地址栏输入https://signin1997.herokuapp.com/regist或者https://signin1997.herokuapp.com/signin");
   }
 });
 
