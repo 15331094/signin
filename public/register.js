@@ -33,7 +33,7 @@ $(document).ready(function() {
 	//展示个人信息的函数
 	function show(Name) {
 		if(window.location.search.substring(0, 10) == "?username=") {
-			$.post("http://localhost:8000/process_post", {"name":window.location.search.substring(10), "ID":"", 
+			$.post("https://signin1997.herokuapp.com/process_post", {"name":window.location.search.substring(10), "ID":"", 
             "phone":"", "email":""}, function(data) {
 				data = eval("(" + data + ")");
 				$("#nameShow").val("用户名: " + data.name);
@@ -45,7 +45,7 @@ $(document).ready(function() {
 	}
 	//	转到登录页面
 	$("#SignIn").click(function() {
-		window.location.href="http://localhost:8000/signin";
+		window.location.href="https://signin1997.herokuapp.com/signin";
 	});
 	//当点击提交按钮
 	$("#submit").click(function() {
@@ -55,7 +55,7 @@ $(document).ready(function() {
 			checkPhone($("#phone").val()) == 1 && checkEmail($("#email").val()) == 1 && 
 			checkPassword($("#password").val()) == 1) {
 			//alert("现在提交看看");
-			$.post("http://localhost:8000/process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
+			$.post("https://signin1997.herokuapp.com/process_post", {"name":$("#name").val(), "ID":$("#ID").val(), 
             "phone":$("#phone").val(), "email":$("#email").val(), "password":$("#password").val()}, function(data) {
 				//alert("lala");
 				//alert(data);
@@ -64,7 +64,7 @@ $(document).ready(function() {
 					//alert("lala");
 					setTimeout(function() {
 						//alert($("#name").val());
-						window.location.href="http://localhost:8000?username=" + $("#name").val();
+						window.location.href="https://signin1997.herokuapp.com?username=" + $("#name").val();
 					}, 1000);
 				}
 
@@ -118,7 +118,7 @@ $(document).ready(function() {
 
 	//当点击退出按钮
 	$("#quit").click(function() {
-		window.location.href="http://localhost:8000/signin"
+		window.location.href="https://signin1997.herokuapp.com/signin"
 	});
 
 });
