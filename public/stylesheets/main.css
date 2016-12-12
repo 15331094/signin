@@ -67,17 +67,10 @@ button {
   /*display: none;*/
 }
 
-#hide {
+#hideshow{
   position: absolute;
   top: 10px;
-  left: 29%;
-  display: none;
-}
-
-#Show {
-  position: absolute;
-  top: 10px;
-  left: 61%;
+  left: 47%;
   display: none;
 }
 
