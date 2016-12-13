@@ -112,7 +112,6 @@ $(document).ready(function() {
 		$("#hideshow").css("display", "block");
 		$("#movie").css("display", "block");
 		$("#comment").css("display", "block");
-		$("#upload").css("display", "block");
 		
 		$("#search").click(function() {
 			$("#movie a").remove();
@@ -171,6 +170,18 @@ $(document).ready(function() {
 	//当点击退出按钮
 	$("#quit").click(function() {
 		window.location.href="https://signin1997.herokuapp.com/signin"
+	});
+	//当点击上传按钮
+	var buoy = false;
+	$("#showbuoy").click(function() {
+		if(buoy == false) {
+			$("#upload").css("display", "block");
+			buoy = true;
+		}
+		else if(buoy == true) {
+			$("#upload").css("display", "none");
+			buoy = false;			
+		}
 	});
 
 });
