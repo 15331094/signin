@@ -116,6 +116,7 @@ $(document).ready(function() {
 		
 		$("#search").click(function() {
 			$("#movie a").remove();
+			$("#movie br").remove();
 			$.post("https://signin1997.herokuapp.com/movies", {"type": $("#searchContent").val()}, function(data) {
 				if(data != "没有匹配的电影资源") {
 					//alert(data);
