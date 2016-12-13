@@ -55,8 +55,7 @@ input {
 }
 
 #movie button {
-  margin-left: auto;
-  margin-right: auto;
+  float: right;
 }
 
 #detailPage input {
@@ -81,7 +80,7 @@ input {
   width: 100%;
   _height: 400px; 
   background-color: white;
-  text-align: center;
+  /*text-align: center;*/
   display: none;
   position: absolute;
   left: 0px;
@@ -90,6 +89,7 @@ input {
   transition: all 1s;
   padding-left: 400px;
   padding-right: 400px;
+  padding-bottom: 20px;
 }
 
 #comment {
@@ -110,4 +110,21 @@ input {
   height: 100%;
   margin-top: -15px;
   opacity:0.4;
+}
+
+#upload {
+  display: block;
+  position: fixed;
+  right: 0;
+  bottom: 50%;
+  width: 150px;
+  padding: 5px;
+  background: #3B9DD6;
+  color: #E8E8E8;
+  z-index: 3;
+  display: none;
+}
+
+#upload button {
+  float: right;
 }
