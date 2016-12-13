@@ -39,6 +39,58 @@ app.get('/signin', function (request, response) {
   response.render('pages2/index');
 });
 
+app.post('/movies', urlencodedParser, function (req, res) {
+  var mongodb = require('mongodb');
+  mongodb.MongoClient.connect(uri, function(err, db) {
+    if(err) throw err;
+    else console.log("成功连接");
+
+    db.collection('movies',{safe:true},function(err,collection){
+      if(err){
+        console.log(err);
+      }  
+      else {
+        console.log("连接上collection");
+        console.log(req.body.type);
+        if(req.body.type == "所有") {
+          collection.find({}).toArray(function(err,items){
+            if(err) throw err;
+            //遍历数据
+            for(var i = 0; i < items.length; i++) {
+              console.log(items[i]);
+            }
+            if(items.length != 0) {
+              res.end(JSON.stringify(items));
+              console.log("lala");
+            }
+            else {
+              res.end("没有匹配的电影资源");
+            }
+          });          
+        }
+        else if(req.body.type != "所有") {
+          collection.find({type: req.body.type}).toArray(function(err,items){
+            if(err) throw err;
+            //遍历数据
+            for(var i = 0; i < items.length; i++) {
+              console.log(items[i]);
+            }
+            if(items.length != 0) {
+              res.end(JSON.stringify(items));
+            }
+            else {
+              res.end("没有匹配的电影资源");
+            }
+          }); 
+        }
+
+
+      } 
+    }); 
+  });
+
+});
+
 app.post('/process_post', urlencodedParser, function (req, res) {
 
   response = {
