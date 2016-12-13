@@ -136,7 +136,7 @@ $(document).ready(function() {
 		
 		$("#send").click(function() {
 			if($("#type").val() != "" && $("#name").val() != "" && $("#url").val() != "") {
-				$.post("https://signin1997.herokuapp.com/send", {"type": $("#type").val(), "name": $("#name").val(), "href": $("#url").val()}, function(data) {
+				$.post("https://signin1997.herokuapp.com/send", {"type": $("#type").val(), "name": $("#moviename").val(), "href": $("#url").val()}, function(data) {
             		$("#type").val(data);
             		$("#name").val("");
             		$("#url").val("");		
