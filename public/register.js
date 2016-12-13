@@ -93,6 +93,27 @@ $(document).ready(function() {
 		$("#hideshow").css("display", "block");
 		$("#movie").css("display", "block");
 		$("#comment").css("display", "block");
+		
+		$("#search").click(function() {
+			//alert($("#searchContent").val());
+			$.post("https://signin1997.herokuapp.com/movies", {"type": $("#searchContent").val()}, function(data) {
+				if(data != "没有匹配的电影资源") {
+					//alert(data);
+					data = eval("(" + data + ")");
+					//alert(data);
+					$("#movie").append($("<br/>"));
+					for(var i = 0; i < data.length; i++) {
+						$("#movie").append($("<a href='" + data[i].href + "'>" + data[i].name + "</a>"));
+						if(i != data.length - 1) $("#movie").append($("<br/>"));
+					}	
+				}
+				else {
+					$("#searchContent").val(data);
+				}
+
+			});			
+		});
+		
 		show(window.location.search.substring(10));
 	}
 
@@ -102,7 +123,7 @@ $(document).ready(function() {
 			$("#signPage").css("display", "none");
 			$("#detailPage").css("display", "none");
 			$("#movie").css("top", "50px");
-			$("#comment").css("top", "360px");	
+			$("#comment").css("top", "380px");	
 			$("#hideshow").text("展示详情");
 			hideshow = "hide";
 		}
@@ -110,7 +131,7 @@ $(document).ready(function() {
 			$("#signPage").css("display", "block");
 			$("#detailPage").css("display", "block");
 			$("#movie").css("top", "455px");
-			$("#comment").css("top", "760px");
+			$("#comment").css("top", "800px");
 			$("#hideshow").text("隐藏详情");
 			hideshow = "show";			
 		}
