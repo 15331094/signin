@@ -93,6 +93,7 @@ $(document).ready(function() {
 		$("#hideshow").css("display", "block");
 		$("#movie").css("display", "block");
 		$("#comment").css("display", "block");
+		$("#upload").css("display", "block");
 		
 		$("#search").click(function() {
 			//alert($("#searchContent").val());
@@ -113,6 +114,29 @@ $(document).ready(function() {
 
 			});			
 		});
+		
+		$("#send").click(function() {
+			var URL = alert($("#url").val());
+			$.ajax({
+        		type: "GET",
+        		cache: false,
+        		url: URL,
+        		data: "",
+        		success: function() {
+					$.post("https://signin1997.herokuapp.com/send", {"type": $("#type").val(), "name": $("#name").val(), "href": $("#url").val()}, function(data) {
+            			$("#type").val(data);
+            			$("#name").val("");
+            			$("#url").val("");										
+					});	            		
+        		},
+        		error: function() {
+            		$("#type").val("链接非法");
+            		$("#name").val("");
+            		$("#url").val("");
+        		}
+    		});
+		
+		});		
 		
 		show(window.location.search.substring(10));
 	}
