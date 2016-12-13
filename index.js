@@ -39,6 +39,45 @@ app.get('/signin', function (request, response) {
   response.render('pages2/index');
 });
 
+app.post('/send', urlencodedParser, function (req, res) {
+
+var movie = {
+  type: req.body.type,
+  name: req.body.name,
+  href: req.body.href
+}
+
+var mongodb = require('mongodb');
+mongodb.MongoClient.connect(uri, function(err, db) {
+    if(err) throw err;
+    else console.log("成功连接");
+
+    db.collection('movies',{safe:true},function(err,collection){
+        if(err){
+          console.log(err);
+        }  
+        else {
+          console.log("连接到movies collections");
+          collection.findOne({name: movie.name}, function(err,doc){
+            console.log('findOne');
+            if(doc == null) {
+              console.log("没有这个用户");
+              collection.insert(movie, {safe: true}, function(err, result){
+                console.log("上传成功");
+                res.end("上传成功!");
+              });
+            }
+            else {
+              console.log("此电影已被上传");
+              res.end("此电影已被上传!");
+            }
+          });
+        } 
+    }); 
+});
+
+});
+
 app.post('/movies', urlencodedParser, function (req, res) {
   var mongodb = require('mongodb');
   mongodb.MongoClient.connect(uri, function(err, db) {
