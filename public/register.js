@@ -43,6 +43,25 @@ $(document).ready(function() {
 			});
 		}
 	}
+	//设置placeholder里面的标签
+	function setPlaceholder() {
+		$.post("https://signin1997.herokuapp.com/movies", {"type": "所有"}, function(data) {
+			if(data != "没有匹配的电影资源") {
+				//alert(data);
+				data = eval("(" + data + ")");
+				var lable = "已有的标签:";
+				for(var i = 0; i < data.length; i++) {
+					if(lable.indexOf(data[i].type) == -1) {
+						lable += data[i].type + " ";
+					}
+				}
+				//alert(lable);
+				$("#searchContent").attr("placeholder", lable);
+			}
+		});		
+	}
+	//打开页面则设置标签提醒
+	setPlaceholder();
 	//	转到登录页面
 	$("#SignIn").click(function() {
 		window.location.href="https://signin1997.herokuapp.com/signin";
@@ -116,27 +135,13 @@ $(document).ready(function() {
 		});
 		
 		$("#send").click(function() {
-			var URL = alert($("#url").val());
-			$.ajax({
-        		type: "GET",
-        		cache: false,
-        		url: URL,
-        		data: "",
-        		success: function() {
-					$.post("https://signin1997.herokuapp.com/send", {"type": $("#type").val(), "name": $("#name").val(), "href": $("#url").val()}, function(data) {
-            			$("#type").val(data);
-            			$("#name").val("");
-            			$("#url").val("");										
-					});	            		
-        		},
-        		error: function() {
-            		$("#type").val("链接非法");
-            		$("#name").val("");
-            		$("#url").val("");
-        		}
-    		});
-		
-		});		
+			$.post("https://signin1997.herokuapp.com/send", {"type": $("#type").val(), "name": $("#name").val(), "href": $("#url").val()}, function(data) {
+            	$("#type").val(data);
+            	$("#name").val("");
+            	$("#url").val("");		
+            	setPlaceholder();
+			});	            		
+		});	
 		
 		show(window.location.search.substring(10));
 	}
