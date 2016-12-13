@@ -87,8 +87,8 @@ input {
   top: 455px;
   font-size: 20px;
   transition: all 1s;
-  padding-left: 400px;
-  padding-right: 400px;
+  padding-left: 30%;
+  padding-right: 30%;
   padding-bottom: 20px;
 }
 
