@@ -115,7 +115,7 @@ $(document).ready(function() {
 		$("#upload").css("display", "block");
 		
 		$("#search").click(function() {
-			//alert($("#searchContent").val());
+			$("#movie a").remove();
 			$.post("https://signin1997.herokuapp.com/movies", {"type": $("#searchContent").val()}, function(data) {
 				if(data != "没有匹配的电影资源") {
 					//alert(data);
@@ -123,8 +123,7 @@ $(document).ready(function() {
 					//alert(data);
 					$("#movie").append($("<br/>"));
 					for(var i = 0; i < data.length; i++) {
-						$("#movie").append($("<a href='" + data[i].href + "'>" + data[i].name + "</a>"));
-						if(i != data.length - 1) $("#movie").append($("<br/>"));
+						$("#movie").append($("<a href='" + data[i].href + "'>" + data[i].name + "  " + "</a>"));
 					}	
 				}
 				else {
